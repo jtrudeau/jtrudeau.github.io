@@ -13,3 +13,4 @@ fields:
   label: categories
 pages:
 - _posts/2019-10-01-new-title.md
+- _posts/another-post.md
