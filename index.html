@@ -1,49 +1,103 @@
----
-layout: default
----
-
-<div class="posts">
-  {% for post in paginator.posts %}
-    <article class="post">
-      <a href="{{ site.baseurl }}{{ post.url }}">
-        <h1>{{ post.title }}</h1>
-
-        <div>
-          <p class="post_date">{{ post.date | date: "%B %e, %Y" }}</p>
-        </div>
-      </a>
-      <div class="entry">
-        {{ post.excerpt }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jtrudeau.github.io</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="branding">
+        <span class="site-title">jtrudeau</span>
+        <span class="tagline">Freshly rebuilt for GitHub Pages</span>
       </div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#highlights">Highlights</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
+  <main>
+    <section class="hero" id="about">
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <h1>Welcome!</h1>
+          <p>
+            This repository now serves a clean, modern landing page ready to be
+            deployed with <strong>GitHub Pages</strong>. Replace this copy with
+            your story, showcase your projects, or link to the work that matters
+            most to you.
+          </p>
+          <a class="cta" href="https://pages.github.com/" target="_blank" rel="noopener">Learn about GitHub Pages</a>
+        </div>
+        <div class="hero-card" role="presentation">
+          <h2>Quick Start</h2>
+          <ol>
+            <li>Edit this page to introduce yourself.</li>
+            <li>Add images to <code>assets/img</code> and reference them here.</li>
+            <li>Commit &amp; push — GitHub Pages will publish automatically.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
 
-  <!-- pagination -->
-  {% if paginator.total_pages > 1 %}
-  <div class="pagination">
-    {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
-    {% else %}
-      <span>&laquo; Prev</span>
-    {% endif %}
+    <section class="highlights" id="highlights">
+      <div class="container">
+        <h2>Highlights</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Projects</h3>
+            <p>Link to your favorite repositories or case studies to provide visitors with a quick tour of your work.</p>
+            <a class="card-link" href="https://github.com/jtrudeau" target="_blank" rel="noopener">GitHub Profile</a>
+          </article>
+          <article class="card">
+            <h3>Writing</h3>
+            <p>Use Markdown or HTML to share blog posts, talks, or documentation hosted elsewhere.</p>
+            <a class="card-link" href="https://docs.github.com/en/pages" target="_blank" rel="noopener">Pages Docs</a>
+          </article>
+          <article class="card">
+            <h3>Contact</h3>
+            <p>Provide email, social links, or a contact form service so people know how to reach you.</p>
+            <a class="card-link" href="#contact">Update contact details</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    {% for page in (1..paginator.total_pages) %}
-      {% if page == paginator.page %}
-        <span class="webjeda">{{ page }}</span>
-      {% elsif page == 1 %}
-        <a href="/">{{ page }}</a>
-      {% else %}
-        <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-      {% endif %}
-    {% endfor %}
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2>Say hello</h2>
+        <p>
+          Drop a line via your preferred platform. Update the links below with
+          your actual destinations.
+        </p>
+        <ul class="contact-list">
+          <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+          <li><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-    {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
-    {% else %}
-      <span>Next &raquo;</span>
-    {% endif %}
-  </div>
-  {% endif %}
-</div>
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Your Name. Built with GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script>
+    const yearTarget = document.getElementById('year');
+    if (yearTarget) {
+      yearTarget.textContent = new Date().getFullYear();
+    }
+  </script>
+</body>
+</html>
