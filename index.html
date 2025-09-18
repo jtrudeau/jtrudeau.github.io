@@ -1,49 +1,70 @@
 ---
 layout: default
+title: Hello, World
 ---
 
-<div class="posts">
-  {% for post in paginator.posts %}
-    <article class="post">
-      <a href="{{ site.baseurl }}{{ post.url }}">
-        <h1>{{ post.title }}</h1>
+<section class="hero">
+  <p class="hero__eyebrow">Hello, world</p>
+  <h1 class="hero__title">Transmissions from a minimalist future</h1>
+  <p class="hero__description">
+    Welcome to the Momentum Labs logbook—equal parts lab notebook and retro-futurist broadcast.
+    Expect concise experiments, sharp ideas, and plenty of colour drawn from the DESY magnets in Hamburg.
+  </p>
+  <div class="hero__cta">
+    <a class="button button--primary" href="#log">Read the latest signal</a>
+    <a class="button button--ghost" href="{{ '/feed.xml' | relative_url }}">Subscribe to the feed</a>
+  </div>
+</section>
 
-        <div>
-          <p class="post_date">{{ post.date | date: "%B %e, %Y" }}</p>
-        </div>
-      </a>
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
-
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+<section class="log" id="log">
+  <div class="log__header">
+    <h2 class="log__title">Latest transmissions</h2>
+    <p class="log__subtitle">Fresh notes, prototypes, and thoughts—crafted for a retro-futuristic lab.</p>
+  </div>
+  {% assign posts = site.posts %}
+  {% if paginator %}
+  {% assign posts = paginator.posts %}
+  {% endif %}
+  {% if posts and posts.size > 0 %}
+  <div class="log__grid">
+    {% for post in posts %}
+    <article class="post-card">
+      <p class="post-card__date">{{ post.date | date: "%d %b %Y" }}</p>
+      <h3 class="post-card__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <p class="post-card__excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+      <a class="post-card__action" href="{{ post.url | relative_url }}">Continue reading</a>
     </article>
-  {% endfor %}
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <p>No transmissions yet. When the first experiment is ready, it will appear right here in neon.</p>
+  </div>
+  {% endif %}
 
-  <!-- pagination -->
-  {% if paginator.total_pages > 1 %}
-  <div class="pagination">
+  {% if paginator and paginator.total_pages > 1 %}
+  <nav class="pagination" aria-label="Pagination">
     {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Prev</a>
     {% else %}
-      <span>&laquo; Prev</span>
+    <span aria-disabled="true">Prev</span>
     {% endif %}
 
     {% for page in (1..paginator.total_pages) %}
       {% if page == paginator.page %}
-        <span class="webjeda">{{ page }}</span>
+        <span class="is-active" aria-current="page">{{ page }}</span>
       {% elsif page == 1 %}
-        <a href="/">{{ page }}</a>
+        <a href="{{ '/' | relative_url }}">{{ page }}</a>
       {% else %}
         <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
       {% endif %}
     {% endfor %}
 
     {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next</a>
     {% else %}
-      <span>Next &raquo;</span>
+    <span aria-disabled="true">Next</span>
     {% endif %}
-  </div>
+  </nav>
   {% endif %}
-</div>
+</section>
