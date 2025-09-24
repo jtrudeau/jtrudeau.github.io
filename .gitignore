@@ -11,5 +11,5 @@ package.json
 *.gem
 *.gemspec
 .jekyll-cache
-archive/
+/archive/
 .replit
