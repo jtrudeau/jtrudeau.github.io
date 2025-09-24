@@ -1,25 +1,26 @@
 ---
 layout: default
-title: Hello, World
+title: Broadcasting from DESY Hamburg
 ---
 
 <section class="hero">
-  <p class="hero__eyebrow">Hello, world</p>
-  <h1 class="hero__title">Transmissions from a minimalist future</h1>
+  <p class="hero__eyebrow">Broadcasting from DESY Hamburg</p>
+  <h1 class="hero__title">Physics educator's lab journal</h1>
   <p class="hero__description">
-    Welcome to the Momentum Labs logbook—equal parts lab notebook and retro-futurist broadcast.
-    Expect concise experiments, sharp ideas, and plenty of colour drawn from the DESY magnets in Hamburg.
+    Welcome to inrobotvoice—documenting my journey as a physics educator with the Dawson Technicolor team 
+    at DESY's Beamline for Schools competition. From Montreal to Hamburg, building cosmic ray detectors 
+    and mentoring brilliant young scientists in the world's most advanced particle physics facility.
   </p>
   <div class="hero__cta">
-    <a class="button button--primary" href="#log">Read the latest signal</a>
-    <a class="button button--ghost" href="{{ '/feed.xml' | relative_url }}">Subscribe to the feed</a>
+    <a class="button button--primary" href="#log">Read the latest entry</a>
+    <a class="button button--ghost" href="{{ '/feed.xml' | relative_url }}">Subscribe to updates</a>
   </div>
 </section>
 
 <section class="log" id="log">
   <div class="log__header">
-    <h2 class="log__title">Latest transmissions</h2>
-    <p class="log__subtitle">Fresh notes, prototypes, and thoughts—crafted for a retro-futuristic lab.</p>
+    <h2 class="log__title">Latest lab entries</h2>
+    <p class="log__subtitle">Daily observations, team spotlights, and experiment chronicles from Hamburg's particle physics frontier.</p>
   </div>
   {% assign posts = site.posts %}
   {% if paginator %}
@@ -38,7 +39,7 @@ title: Hello, World
   </div>
   {% else %}
   <div class="empty-state">
-    <p>No transmissions yet. When the first experiment is ready, it will appear right here in neon.</p>
+    <p>First lab entries coming soon. From cosmic ray detectors to student breakthroughs—the DESY journey begins here.</p>
   </div>
   {% endif %}
 

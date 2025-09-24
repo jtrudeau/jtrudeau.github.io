@@ -11,8 +11,8 @@
   <style>
     :root {
       --desy-blue: #005ea8;
-      --desy-red: #e4002b;
-      --desy-yellow: #f9b000;
+      --desy-orange: #ff6b35;
+      --desy-orange-light: #ff8c5a;
       --bg: #05060f;
       --bg-alt: #080a1a;
       --fg: #f4f6ff;
@@ -30,8 +30,8 @@
       margin: 0;
       min-height: 100vh;
       background: radial-gradient(circle at top right, rgba(0, 94, 168, 0.35), transparent 55%),
-        radial-gradient(circle at 15% 25%, rgba(228, 0, 43, 0.3), transparent 60%),
-        linear-gradient(135deg, rgba(249, 176, 0, 0.08), rgba(5, 6, 15, 0.9)), var(--bg);
+        radial-gradient(circle at 15% 25%, rgba(255, 107, 53, 0.25), transparent 60%),
+        linear-gradient(135deg, rgba(255, 107, 53, 0.06), rgba(5, 6, 15, 0.9)), var(--bg);
       color: var(--fg);
       font-family: 'Space Grotesk', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
@@ -47,8 +47,8 @@
       inset: 0;
       background-image: repeating-linear-gradient(
         to bottom,
-        rgba(249, 176, 0, 0.025) 0,
-        rgba(249, 176, 0, 0.025) 1px,
+        rgba(255, 107, 53, 0.02) 0,
+        rgba(255, 107, 53, 0.02) 1px,
         transparent 1px,
         transparent 6px
       );
@@ -74,7 +74,7 @@
       top: -40px;
       left: 1rem;
       padding: 0.5rem 1rem;
-      background: var(--desy-yellow);
+      background: var(--desy-orange);
       color: #05060f;
       font-weight: 600;
       border-radius: 999px;
@@ -92,7 +92,7 @@
       z-index: 5;
       backdrop-filter: blur(18px);
       background: linear-gradient(120deg, rgba(0, 94, 168, 0.45), rgba(5, 6, 15, 0.85) 55%);
-      border-bottom: 1px solid rgba(249, 176, 0, 0.22);
+      border-bottom: 1px solid rgba(255, 107, 53, 0.22);
     }
 
     .site-header__inner {
@@ -110,7 +110,7 @@
       font-size: clamp(1rem, 2.2vw, 1.25rem);
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--desy-yellow);
+      color: var(--desy-orange);
       display: inline-flex;
       align-items: center;
       gap: 0.65rem;
@@ -122,8 +122,8 @@
       width: 0.5rem;
       height: 0.5rem;
       border-radius: 999px;
-      background: var(--desy-red);
-      box-shadow: 0 0 12px rgba(228, 0, 43, 0.6);
+      background: var(--desy-blue);
+      box-shadow: 0 0 12px rgba(0, 94, 168, 0.6);
     }
 
     .site-nav {
@@ -145,7 +145,7 @@
       position: absolute;
       inset: auto 0 -0.35rem 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--desy-blue), var(--desy-yellow));
+      background: linear-gradient(90deg, var(--desy-blue), var(--desy-orange));
       transform: scaleX(0);
       transform-origin: center;
       transition: transform 0.2s ease;
@@ -174,7 +174,7 @@
       padding: clamp(2rem, 5vw, 3rem);
       border-radius: calc(var(--border-radius) * 1.2);
       background: linear-gradient(135deg, rgba(0, 94, 168, 0.25), rgba(5, 6, 15, 0.6));
-      border: 1px solid rgba(249, 176, 0, 0.2);
+      border: 1px solid rgba(255, 107, 53, 0.2);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
       position: relative;
       overflow: hidden;
@@ -184,7 +184,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 20% 20%, rgba(249, 176, 0, 0.25), transparent 55%),
+      background: radial-gradient(circle at 20% 20%, rgba(255, 107, 53, 0.25), transparent 55%),
         linear-gradient(120deg, rgba(0, 94, 168, 0.35), transparent 60%);
       mix-blend-mode: screen;
       pointer-events: none;
@@ -196,7 +196,7 @@
       letter-spacing: 0.25em;
       text-transform: uppercase;
       font-size: 0.78rem;
-      color: var(--desy-yellow);
+      color: var(--desy-orange);
       z-index: 1;
     }
 
@@ -208,7 +208,7 @@
       letter-spacing: 0.16em;
       margin: 0;
       z-index: 1;
-      background: linear-gradient(90deg, var(--desy-blue), var(--desy-yellow), var(--desy-red));
+      background: linear-gradient(90deg, var(--desy-blue), var(--desy-orange), var(--desy-orange-light));
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -242,14 +242,14 @@
     }
 
     .button--primary {
-      background: linear-gradient(135deg, var(--desy-blue), var(--desy-yellow));
-      color: #05060f;
+      background: linear-gradient(135deg, var(--desy-blue), var(--desy-orange));
+      color: #ffffff;
       box-shadow: 0 15px 30px rgba(0, 94, 168, 0.35);
     }
 
     .button--ghost {
-      border-color: rgba(249, 176, 0, 0.45);
-      color: var(--desy-yellow);
+      border-color: rgba(255, 107, 53, 0.45);
+      color: var(--desy-orange);
       background: rgba(5, 6, 15, 0.35);
       backdrop-filter: blur(8px);
     }
@@ -305,7 +305,7 @@
       inset: 0;
       border-radius: inherit;
       padding: 1px;
-      background: linear-gradient(120deg, rgba(0, 94, 168, 0.6), rgba(249, 176, 0, 0.6));
+      background: linear-gradient(120deg, rgba(0, 94, 168, 0.6), rgba(255, 107, 53, 0.6));
       mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
       mask-composite: exclude;
       -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
@@ -327,7 +327,7 @@
       font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      color: var(--desy-yellow);
+      color: var(--desy-orange);
       z-index: 1;
     }
 
@@ -341,7 +341,7 @@
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: var(--desy-red);
+      color: var(--desy-orange-light);
       font-weight: 600;
       z-index: 1;
     }
@@ -361,7 +361,7 @@
     .pagination span {
       padding: 0.4rem 0.75rem;
       border-radius: 999px;
-      border: 1px solid rgba(249, 176, 0, 0.25);
+      border: 1px solid rgba(255, 107, 53, 0.25);
       color: var(--muted);
     }
 
@@ -376,7 +376,7 @@
     .empty-state {
       padding: 2.5rem;
       border-radius: var(--border-radius);
-      border: 1px dashed rgba(249, 176, 0, 0.4);
+      border: 1px dashed rgba(255, 107, 53, 0.4);
       color: var(--muted);
       text-align: center;
       background: rgba(5, 6, 15, 0.6);
@@ -385,7 +385,7 @@
     .site-footer {
       padding: 3rem 0 4rem;
       background: linear-gradient(180deg, transparent, rgba(0, 94, 168, 0.18));
-      border-top: 1px solid rgba(249, 176, 0, 0.2);
+      border-top: 1px solid rgba(255, 107, 53, 0.2);
       text-align: center;
       font-size: 0.85rem;
       color: var(--muted);
@@ -416,12 +416,8 @@
       background: var(--desy-blue);
     }
 
-    .swatch.red {
-      background: var(--desy-red);
-    }
-
-    .swatch.yellow {
-      background: var(--desy-yellow);
+    .swatch.orange {
+      background: var(--desy-orange);
     }
 
     @media (max-width: 720px) {
@@ -466,8 +462,8 @@
     <div class="site-header__inner">
       <a class="site-title" href="{{ '/' | absolute_url }}">{{ site.name | default: 'Retro Log' }}</a>
       <nav class="site-nav" aria-label="Primary">
-        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
-        <a href="#log">Log</a>
+        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Journal</a>
+        <a href="{{ '/' | relative_url }}#log">Latest</a>
         <a href="{{ '/feed.xml' | relative_url }}">Feed</a>
       </nav>
     </div>
@@ -480,8 +476,7 @@
       <span>&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}. Broadcast via GitHub Pages.</span>
       <span class="footer-swatch" aria-hidden="true">
         <span class="swatch blue"></span>
-        <span class="swatch red"></span>
-        <span class="swatch yellow"></span>
+        <span class="swatch orange"></span>
       </span>
     </div>
   </footer>
