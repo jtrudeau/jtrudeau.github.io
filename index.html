@@ -1,71 +1,11 @@
----
-layout: default
-title: A DESY Journey
----
-
-<section class="hero">
-  <p class="hero__eyebrow">Broadcasting from DESY Hamburg</p>
-  <h1 class="hero__title">A DESY Journey through the eyes of Joel Trudeau</h1>
-  <p class="hero__description">
-    Welcome to inrobotvoice—documenting my journey as a physics educator with the Dawson Technicolor team 
-    at DESY's Beamline for Schools competition. From Montreal to Hamburg, building cosmic ray detectors 
-    and mentoring brilliant young scientists in the world's most advanced particle physics facility.
-  </p>
-  <div class="hero__cta">
-    <a class="button button--primary" href="#log">Read the latest entry</a>
-    <a class="button button--ghost" href="{{ '/feed.xml' | relative_url }}">Subscribe to updates</a>
-  </div>
-</section>
-
-<section class="log" id="log">
-  <div class="log__header">
-    <h2 class="log__title">Latest lab entries</h2>
-    <p class="log__subtitle">Daily observations, team spotlights, and experiment chronicles from Hamburg's particle physics frontier.</p>
-  </div>
-  {% assign posts = site.posts %}
-  {% if paginator %}
-  {% assign posts = paginator.posts %}
-  {% endif %}
-  {% if posts and posts.size > 0 %}
-  <div class="log__grid">
-    {% for post in posts %}
-    <article class="post-card">
-      <p class="post-card__date">{{ post.date | date: "%d %b %Y" }}</p>
-      <h3 class="post-card__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      <p class="post-card__excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</p>
-      <a class="post-card__action" href="{{ post.url | relative_url }}">Continue reading</a>
-    </article>
-    {% endfor %}
-  </div>
-  {% else %}
-  <div class="empty-state">
-    <p>First lab entries coming soon. From cosmic ray detectors to student breakthroughs—the DESY journey begins here.</p>
-  </div>
-  {% endif %}
-
-  {% if paginator and paginator.total_pages > 1 %}
-  <nav class="pagination" aria-label="Pagination">
-    {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Prev</a>
-    {% else %}
-    <span aria-disabled="true">Prev</span>
-    {% endif %}
-
-    {% for page in (1..paginator.total_pages) %}
-      {% if page == paginator.page %}
-        <span class="is-active" aria-current="page">{{ page }}</span>
-      {% elsif page == 1 %}
-        <a href="{{ '/' | relative_url }}">{{ page }}</a>
-      {% else %}
-        <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-      {% endif %}
-    {% endfor %}
-
-    {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next</a>
-    {% else %}
-    <span aria-disabled="true">Next</span>
-    {% endif %}
-  </nav>
-  {% endif %}
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joel Trudeau</title>
+</head>
+<body>
+    <p>"Hello world, it's me inrobotvoice" --Joel Trudeau</p>
+</body>
+</html>
