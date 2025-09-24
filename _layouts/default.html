@@ -13,13 +13,29 @@
       --desy-blue: #005ea8;
       --desy-orange: #ff6b35;
       --desy-orange-light: #ff8c5a;
-      --bg: #05060f;
-      --bg-alt: #080a1a;
-      --fg: #f4f6ff;
-      --muted: rgba(244, 246, 255, 0.68);
-      --grid-line: rgba(0, 94, 168, 0.14);
       --border-radius: 1.25rem;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0a0f;
+      --bg-alt: #1a1a2e;
+      --bg-card: #16213e;
+      --fg: #f4f6ff;
+      --muted: rgba(244, 246, 255, 0.7);
+      --border: rgba(0, 94, 168, 0.2);
+      --shadow: rgba(0, 0, 0, 0.3);
       color-scheme: dark;
+    }
+
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --bg-card: #ffffff;
+      --fg: #1e293b;
+      --muted: rgba(30, 41, 59, 0.7);
+      --border: rgba(0, 94, 168, 0.15);
+      --shadow: rgba(0, 94, 168, 0.1);
+      color-scheme: light;
     }
 
     * {
@@ -29,9 +45,7 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: radial-gradient(circle at top right, rgba(0, 94, 168, 0.35), transparent 55%),
-        radial-gradient(circle at 15% 25%, rgba(255, 107, 53, 0.25), transparent 60%),
-        linear-gradient(135deg, rgba(255, 107, 53, 0.06), rgba(5, 6, 15, 0.9)), var(--bg);
+      background: var(--bg);
       color: var(--fg);
       font-family: 'Space Grotesk', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
@@ -39,22 +53,18 @@
       flex-direction: column;
       position: relative;
       overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
+    /* DESY dots pattern */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: repeating-linear-gradient(
-        to bottom,
-        rgba(255, 107, 53, 0.02) 0,
-        rgba(255, 107, 53, 0.02) 1px,
-        transparent 1px,
-        transparent 6px
-      );
+      background-image: radial-gradient(circle at 20px 20px, var(--desy-blue) 2px, transparent 2px);
+      background-size: 60px 60px;
+      opacity: 0.03;
       pointer-events: none;
-      opacity: 0.6;
-      mix-blend-mode: screen;
       z-index: 0;
     }
 
@@ -91,8 +101,9 @@
       top: 0;
       z-index: 5;
       backdrop-filter: blur(18px);
-      background: linear-gradient(120deg, rgba(0, 94, 168, 0.45), rgba(5, 6, 15, 0.85) 55%);
-      border-bottom: 1px solid rgba(255, 107, 53, 0.22);
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.3s ease;
     }
 
     .site-header__inner {
@@ -103,6 +114,32 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--fg);
+      padding: 0.5rem;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--desy-blue);
+      color: var(--desy-blue);
     }
 
     .site-title {
@@ -145,7 +182,7 @@
       position: absolute;
       inset: auto 0 -0.35rem 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--desy-blue), var(--desy-orange));
+      background: var(--desy-blue);
       transform: scaleX(0);
       transform-origin: center;
       transition: transform 0.2s ease;
@@ -173,9 +210,9 @@
       gap: 1.5rem;
       padding: clamp(2rem, 5vw, 3rem);
       border-radius: calc(var(--border-radius) * 1.2);
-      background: linear-gradient(135deg, rgba(0, 94, 168, 0.25), rgba(5, 6, 15, 0.6));
-      border: 1px solid rgba(255, 107, 53, 0.2);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px var(--shadow);
       position: relative;
       overflow: hidden;
     }
@@ -183,11 +220,13 @@
     .hero::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 20% 20%, rgba(255, 107, 53, 0.25), transparent 55%),
-        linear-gradient(120deg, rgba(0, 94, 168, 0.35), transparent 60%);
-      mix-blend-mode: screen;
-      pointer-events: none;
+      top: 20px;
+      right: 20px;
+      width: 8px;
+      height: 8px;
+      background: var(--desy-orange);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--desy-orange);
       z-index: 0;
     }
 
@@ -208,9 +247,7 @@
       letter-spacing: 0.16em;
       margin: 0;
       z-index: 1;
-      background: linear-gradient(90deg, var(--desy-blue), var(--desy-orange), var(--desy-orange-light));
-      -webkit-background-clip: text;
-      color: transparent;
+      color: var(--desy-blue);
     }
 
     .hero__description {
@@ -242,16 +279,15 @@
     }
 
     .button--primary {
-      background: linear-gradient(135deg, var(--desy-blue), var(--desy-orange));
+      background: var(--desy-blue);
       color: #ffffff;
-      box-shadow: 0 15px 30px rgba(0, 94, 168, 0.35);
+      box-shadow: 0 8px 24px var(--shadow);
     }
 
     .button--ghost {
-      border-color: rgba(255, 107, 53, 0.45);
+      border-color: var(--border);
       color: var(--desy-orange);
-      background: rgba(5, 6, 15, 0.35);
-      backdrop-filter: blur(8px);
+      background: var(--bg-alt);
     }
 
     .log {
@@ -291,27 +327,30 @@
       position: relative;
       padding: 1.75rem;
       border-radius: var(--border-radius);
-      background: linear-gradient(160deg, rgba(8, 10, 26, 0.95), rgba(0, 94, 168, 0.1));
-      border: 1px solid rgba(0, 94, 168, 0.25);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       display: grid;
       gap: 1rem;
       min-height: 220px;
       overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .post-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px var(--shadow);
     }
 
     .post-card::before {
       content: '';
       position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(120deg, rgba(0, 94, 168, 0.6), rgba(255, 107, 53, 0.6));
-      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      mask-composite: exclude;
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
+      top: 1rem;
+      left: 1rem;
+      width: 4px;
+      height: 4px;
+      background: var(--desy-orange);
+      border-radius: 50%;
       pointer-events: none;
-      opacity: 0.35;
     }
 
     .post-card__title {
@@ -361,7 +400,7 @@
     .pagination span {
       padding: 0.4rem 0.75rem;
       border-radius: 999px;
-      border: 1px solid rgba(255, 107, 53, 0.25);
+      border: 1px solid var(--border);
       color: var(--muted);
     }
 
@@ -376,16 +415,16 @@
     .empty-state {
       padding: 2.5rem;
       border-radius: var(--border-radius);
-      border: 1px dashed rgba(255, 107, 53, 0.4);
+      border: 1px dashed var(--border);
       color: var(--muted);
       text-align: center;
-      background: rgba(5, 6, 15, 0.6);
+      background: var(--bg-alt);
     }
 
     .site-footer {
       padding: 3rem 0 4rem;
-      background: linear-gradient(180deg, transparent, rgba(0, 94, 168, 0.18));
-      border-top: 1px solid rgba(255, 107, 53, 0.2);
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
       text-align: center;
       font-size: 0.85rem;
       color: var(--muted);
@@ -456,16 +495,19 @@
     }
   </style>
 </head>
-<body>
+<body data-theme="dark">
   <a class="skip-link" href="#content">Skip to content</a>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="site-title" href="{{ '/' | absolute_url }}">{{ site.name | default: 'Retro Log' }}</a>
-      <nav class="site-nav" aria-label="Primary">
-        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Journal</a>
-        <a href="{{ '/' | relative_url }}#log">Latest</a>
-        <a href="{{ '/feed.xml' | relative_url }}">Feed</a>
-      </nav>
+      <a class="site-title" href="{{ '/' | absolute_url }}">{{ site.name | default: 'inrobotvoice' }}</a>
+      <div class="header-controls">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Journal</a>
+        </nav>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+          <span id="theme-icon">◐</span>
+        </button>
+      </div>
     </div>
   </header>
   <main id="content">
@@ -480,5 +522,33 @@
       </span>
     </div>
   </footer>
+  
+  <script>
+    // Theme toggle functionality
+    function toggleTheme() {
+      const body = document.body;
+      const themeIcon = document.getElementById('theme-icon');
+      const currentTheme = body.getAttribute('data-theme');
+      
+      if (currentTheme === 'dark') {
+        body.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '◑';
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '◐';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+    
+    // Initialize theme from localStorage or default to dark
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      const themeIcon = document.getElementById('theme-icon');
+      
+      document.body.setAttribute('data-theme', savedTheme);
+      themeIcon.textContent = savedTheme === 'light' ? '◑' : '◐';
+    });
+  </script>
 </body>
 </html>
